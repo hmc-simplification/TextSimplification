@@ -130,14 +130,14 @@ public class ScrollingLabel: CustomStringConvertible {
     
     
     
-    init(frame:CGRect) {
+    init(xPosition: CGFloat, yPosition: CGFloat, width: CGFloat, height: CGFloat) {
         /*Initializes the object by calling 3 private setup functions,
         each dealing one with a specific feature of the final label, and
         finally calling the scroll function to activate the accelerometer
         control*/
-        setupFrame(frame)
+        setupFrame(xPosition, yPosition: yPosition, width: width, height: height)
         setupLabel()
-        setupScroll()
+        setupScrollView()
         startScrolling()
     }
     
@@ -150,81 +150,95 @@ public class ScrollingLabel: CustomStringConvertible {
         self.stopwatch.stop()
     }
     
-    private func setupFrame(frame:CGRect) {
+    private func setupFrame(xPosition: CGFloat, yPosition: CGFloat, width: CGFloat, height: CGFloat) {
+        let frame = CGRectMake(xPosition, yPosition, width, height)
         //Creates the frame of the label, and creates the child objects
         self.frame=frame
-        if startWithTextOffScreen {labelXCoord+=self.frame.width}
-        baseTextLabel=UILabel(frame:CGRectMake(labelXCoord,labelYCoord,0,0))
-        baseScrollView=UIScrollView(frame:frame)
+        if startWithTextOffScreen { labelXCoord += self.frame.width }
+        baseTextLabel = UILabel(frame: CGRectMake(labelXCoord, labelYCoord, 0, 0))
+        baseScrollView = UIScrollView(frame: frame)
+        
         if PRIVATEDEBUG {PUBLICDEBUG=true}
     }
     
-    private func setupScroll() {
+    private func setupScrollView() {
         //Sets up the scrollview which the label will be placed in
-        baseScrollView.layer.cornerRadius=cornerRadius
-        baseScrollView.layer.masksToBounds=true
-        baseScrollView.layer.borderColor=borderColor.CGColor
-        baseScrollView.layer.borderWidth=borderWidth
-        baseScrollView.layer.backgroundColor=backgroundColor.CGColor
-        if PRIVATEDEBUG {baseScrollView.userInteractionEnabled=true}
-        else {baseScrollView.userInteractionEnabled=false}
+        baseScrollView.layer.cornerRadius = cornerRadius
+        baseScrollView.layer.masksToBounds = true
         
+        // Only mess with the border when we can't do blurring
+        if UIAccessibilityIsReduceTransparencyEnabled() {
+            baseScrollView.layer.borderColor=borderColor.CGColor
+            baseScrollView.layer.borderWidth=borderWidth
+            baseScrollView.layer.backgroundColor=backgroundColor.CGColor
+        }
+        
+        baseScrollView.userInteractionEnabled = PRIVATEDEBUG
     }
     
     private func setupLabel() {
         //Sets up the label for the text, as well adding it to the scrollview
         baseTextLabel.textAlignment = .Left
-        self.text=ScrollingLabel.sampleText
-        self.font=ScrollingLabel.sampleFont
+        self.text = ScrollingLabel.sampleText
+        self.font = ScrollingLabel.sampleFont
         baseScrollView.addSubview(baseTextLabel)
         if PRIVATEDEBUG {
-            baseTextLabel.layer.borderWidth=1
-            baseTextLabel.layer.borderColor=UIColor.blueColor().CGColor
+            baseTextLabel.layer.borderWidth = 1
+            baseTextLabel.layer.borderColor = UIColor.blueColor().CGColor
         }
         
     }
     
     private func startScrolling() {
-        //The main accelerometer control of the label
+        // The main accelerometer control of the label
         
-        //Allows the start orientation to become default
-        var firstOrientation:Bool
-        if letUserCreateDefaultOrientation {firstOrientation=true}
-        else {firstOrientation=false}
-        var standardAccel:Double=0
-        var lastElapsedTime:Double=0
+        // Allows the start orientation to become default
+        var firstOrientation: Bool
+        if letUserCreateDefaultOrientation {
+            firstOrientation = true
+        } else {
+            firstOrientation = false
+        }
+        var standardAccel: Double = 0
+        var lastElapsedTime: Double = 0
         
         self.stopwatch.start()
-        //Begins taking updates from the accelerometer
-        if motionManager.accelerometerAvailable{
-            motionManager.accelerometerUpdateInterval=updateTimeInterval
-            motionManager.startAccelerometerUpdatesToQueue(self.queue, withHandler: {accelerometerData, error in guard let accelerometerData=accelerometerData else {return}
-                //Changes the input of acceleration depending on constant control variables
-                var accel:Double
+        // Begins taking updates from the accelerometer
+        if motionManager.accelerometerAvailable {
+            motionManager.accelerometerUpdateInterval = updateTimeInterval
+            motionManager.startAccelerometerUpdatesToQueue(self.queue, withHandler: {accelerometerData, error in
+                    guard let accelerometerData = accelerometerData else {return}
+                
+                // Changes the input of acceleration depending on constant control variables
+                var accel: Double
                 if !self.upDownTilt {
-                    if self.invertTextMotion {accel = accelerometerData.acceleration.y}
-                    else {accel = -accelerometerData.acceleration.y}
+                    if self.invertTextMotion {
+                        accel = accelerometerData.acceleration.y
+                    } else {
+                        accel = -accelerometerData.acceleration.y
+                    }
                 }
                 else {
-                    if self.invertTextMotion {accel = accelerometerData.acceleration.x}
-                    else {accel = -accelerometerData.acceleration.x}
+                    if self.invertTextMotion {
+                        accel = accelerometerData.acceleration.x
+                    }
+                    else {
+                        accel = -accelerometerData.acceleration.x
+                    }
                 }
                 
-                //Sets the bounds of the label to prevent nil unwrapping
-                let minXOffset:CGFloat=0
-                let maxXOffset=self.baseScrollView.contentSize.width-self.baseScrollView.frame.size.width
+                // Sets the bounds of the label to prevent nil unwrapping
+                let minXOffset: CGFloat = 0
+                let maxXOffset = self.baseScrollView.contentSize.width - self.baseScrollView.frame.size.width
 
-                //Changes default acceleration if allowed, but doesn't alter underlying option
+                // Changes default acceleration if allowed, but doesn't alter underlying option
                 if firstOrientation {
-                    standardAccel=accel
-                    firstOrientation=false
+                    standardAccel = accel
+                    firstOrientation = false
                 }
-                accel=accel-standardAccel
+                accel = accel - standardAccel
                 
-                
-                
-                
-                //If accel is greater than minimum, and label is not paused begin updates
+                // If accel is greater than minimum, and label is not paused begin updates
                 if !self.pauseScrolling && fabs(accel)>=self.minTiltRequired {
                     //If the timer has not started, and accel is positive, begin the timer
                     if !self.timerStarted&&accel<0{
@@ -237,15 +251,20 @@ public class ScrollingLabel: CustomStringConvertible {
                     }
                     if self.collectData {self.storeIndexAccelValues(accel,timeElapsed: self.stopwatch.elapsedTime,lastElapsedTime:lastElapsedTime)}
                     var targetX:CGFloat=self.baseScrollView.contentOffset.x+(CGFloat(accel) * self.speed)
-                    if targetX>maxXOffset {targetX=maxXOffset;self.haltScrollingLabel()}
-                    else if targetX<minXOffset {targetX=minXOffset}
-                    dispatch_async(dispatch_get_main_queue()){
-                        self.baseScrollView.setContentOffset(CGPointMake(targetX,0),animated:true)
+                    if targetX > maxXOffset {
+                        targetX = maxXOffset
+                        self.haltScrollingLabel()
                     }
-                    if self.baseScrollView.contentOffset.x>minXOffset&&self.baseScrollView.contentOffset.x<maxXOffset {
-                        if self.PRIVATEDEBUG {
-                            print(self.baseScrollView.contentOffset)
-                        }
+                    else if targetX < minXOffset {
+                        targetX = minXOffset
+                    }
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.baseScrollView.setContentOffset(CGPointMake(targetX, 0), animated:true)
+                    }
+                    if self.baseScrollView.contentOffset.x > minXOffset &&
+                       self.baseScrollView.contentOffset.x < maxXOffset &&
+                        self.PRIVATEDEBUG {
+                        print(self.baseScrollView.contentOffset)
                     }
                 }
                 lastElapsedTime=self.stopwatch.elapsedTime
@@ -255,7 +274,7 @@ public class ScrollingLabel: CustomStringConvertible {
     
     func smoothAccel(accel:Double) -> Double {
         //Low pass smoothing filter
-        self.smoothAcceleration+=(accel-self.smoothAcceleration)*self.smoothingFactor
+        self.smoothAcceleration += (accel - self.smoothAcceleration)*self.smoothingFactor
         return self.smoothAcceleration
     }
     
