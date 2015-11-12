@@ -7,9 +7,9 @@ xcode_project: "APP/HMC Word Scroll/HMC Word Scroll.xcodeproj"
 xcode_scheme: "HMC Word Scroll"
 
 # Update any of our needed tools
-before_install:
-    - brew update
-    - brew outdated xctool || brew install xctool
+# before_install:
+#    - brew update
+#    - brew outdated xctool || brew install xctool
 
 # Send the emails to 121 group members.
 # By default sends an email whenever the build fails, or whenever the successful
