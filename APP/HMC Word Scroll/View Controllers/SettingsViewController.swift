@@ -17,6 +17,19 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
     
+    var colorThemes = ["Normal","Inverse","Sepia"]
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return colorThemes.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return colorThemes[row]
+    }
     
     @IBAction func speedSwitchChanged(sender: AnyObject) {
         if displaySpeedSwitch.on {

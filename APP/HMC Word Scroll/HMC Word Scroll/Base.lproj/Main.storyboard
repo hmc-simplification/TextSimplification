@@ -244,12 +244,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Regular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbX-iI-deR">
-                                <rect key="frame" x="733" y="442" width="138" height="52"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cre-GS-lXU">
+                                <rect key="frame" x="737" y="379" width="205" height="196"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Z1S-Aa-wRR" id="Zh2-w9-cdm"/>
+                                    <outlet property="delegate" destination="Z1S-Aa-wRR" id="ZYy-kD-ZJ8"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -515,7 +516,7 @@
         <image name="settings.png" width="800" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MfC-eb-axc"/>
+        <segue reference="7iQ-pB-O8v"/>
         <segue reference="KYb-H9-r60"/>
     </inferredMetricsTieBreakers>
 </document>
