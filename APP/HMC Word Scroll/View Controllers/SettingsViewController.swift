@@ -17,6 +17,15 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
     
+    @IBOutlet weak var label2: UILabel!
+    
+    @IBOutlet weak var settingsLabel: UILabel!
+    @IBOutlet weak var themesLabel: UILabel!
+    @IBOutlet weak var fontSizeLabel: UILabel!
+    @IBOutlet weak var fontSizeLabel2: UILabel!
+    @IBOutlet weak var displaySpeedLabel: UILabel!
+    @IBOutlet weak var fixedSpeedLabel: UILabel!
+    
     var colorThemes = ["Normal","Inverse","Sepia"]
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -29,6 +38,44 @@ class SettingsViewController: UIViewController {
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         return colorThemes[row]
+    }
+    
+    // Capture the picker view selection
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // This method is triggered whenever the user makes a change to the picker selection.
+        // The parameter named row and component represents what was selected.
+        
+        NSUserDefaults.standardUserDefaults().setObject(colorThemes[row], forKey: "theme")
+        let currentTheme = NSUserDefaults.standardUserDefaults().objectForKey("theme")! as! NSString
+        
+        let arr = [settingsLabel, themesLabel, fontSizeLabel, fontSizeLabel2,displaySpeedLabel,fixedSpeedLabel, label2]
+        
+        if currentTheme == "Inverse" {
+            self.view.backgroundColor = UIColor.blackColor()
+            
+            
+            for label in arr {
+                label.textColor = UIColor.whiteColor()
+            }
+        }
+        else if currentTheme == "Sepia" {
+            let swiftColor = UIColor(red: 253/255, green: 227/255, blue: 167/255, alpha: 1)
+            
+            self.view.backgroundColor = swiftColor
+            
+            for label in arr {
+                label.textColor = UIColor.brownColor()
+            }
+        }
+        else {
+            self.view.backgroundColor = UIColor.whiteColor()
+            
+            for label in arr {
+                label.textColor = UIColor.blackColor()
+            }
+        }
+        
+        label2.text = currentTheme as String
     }
     
     @IBAction func speedSwitchChanged(sender: AnyObject) {

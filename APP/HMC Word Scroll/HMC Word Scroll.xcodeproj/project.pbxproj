@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		87A6EC1A1BBBA24000E8A102 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 87A6EC191BBBA24000E8A102 /* settings.png */; settings = {ASSET_TAGS = (); }; };
-		87A6EC1E1BBBA9EF00E8A102 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 87A6EC1D1BBBA9EF00E8A102 /* home.png */; settings = {ASSET_TAGS = (); }; };
-		87CEFBB81BC824180086C680 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEFBB71BC824180086C680 /* InstructionsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		87CEFBBA1BC8286A0086C680 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEFBB91BC8286A0086C680 /* SettingsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		87CEFBBC1BC82D370086C680 /* UserStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEFBBB1BC82D370086C680 /* UserStatsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		87A6EC1A1BBBA24000E8A102 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 87A6EC191BBBA24000E8A102 /* settings.png */; };
+		87A6EC1E1BBBA9EF00E8A102 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 87A6EC1D1BBBA9EF00E8A102 /* home.png */; };
+		87CEFBB81BC824180086C680 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEFBB71BC824180086C680 /* InstructionsViewController.swift */; };
+		87CEFBBA1BC8286A0086C680 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEFBB91BC8286A0086C680 /* SettingsViewController.swift */; };
+		87CEFBBC1BC82D370086C680 /* UserStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEFBBB1BC82D370086C680 /* UserStatsViewController.swift */; };
 		EA2130C61B4B1A1E00C492D8 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2130C31B4B1A1E00C492D8 /* IntroViewController.swift */; };
 		EA2130C71B4B1A1E00C492D8 /* MetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2130C41B4B1A1E00C492D8 /* MetricsViewController.swift */; };
 		EA2130C81B4B1A1E00C492D8 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2130C51B4B1A1E00C492D8 /* TestViewController.swift */; };
