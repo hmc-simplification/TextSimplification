@@ -48,10 +48,10 @@ class SettingsViewController: UIViewController {
         NSUserDefaults.standardUserDefaults().setObject(colorThemes[row], forKey: "theme")
         let currentTheme = NSUserDefaults.standardUserDefaults().objectForKey("theme")! as! NSString
         
-        let arr = [settingsLabel, themesLabel, fontSizeLabel, fontSizeLabel2,displaySpeedLabel,fixedSpeedLabel, label2]
+        let arr = [settingsLabel, themesLabel, fontSizeLabel, fontSizeLabel2,displaySpeedLabel,fixedSpeedLabel,label2]
         
         if currentTheme == "Inverse" {
-            self.view.backgroundColor = UIColor.blackColor()
+            self.view.backgroundColor = UIColor.grayColor()
             
             
             for label in arr {
