@@ -32,12 +32,17 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
     
+    @IBOutlet weak var fontSizeStepper: UIStepper!
     @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var themesLabel: UILabel!
     @IBOutlet weak var fontSizeLabel: UILabel!
     @IBOutlet weak var fontSizeLabel2: UILabel!
     @IBOutlet weak var displaySpeedLabel: UILabel!
     @IBOutlet weak var fixedSpeedLabel: UILabel!
+    
+    @IBAction func stepperValueChanged(sender: UIStepper) {
+        fontSizeLabel2.text = Int(sender.value).description
+    }
     
     var colorThemes = ["Normal","Inverse","Sepia"]
     
@@ -63,7 +68,6 @@ class SettingsViewController: UIViewController {
         
         let currentTheme = colorThemes[row]
         Settings.currentTheme = currentTheme
-        
         let arr = [settingsLabel, themesLabel, fontSizeLabel, fontSizeLabel2,displaySpeedLabel,fixedSpeedLabel]
         
         if currentTheme == "Inverse" {
@@ -104,7 +108,6 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -136,6 +139,11 @@ class SettingsViewController: UIViewController {
         }
         
         print(Settings.currentTheme)
+        
+        fontSizeStepper.wraps = true
+        fontSizeStepper.autorepeat = true
+        fontSizeStepper.maximumValue = 130
+        fontSizeStepper.minimumValue = 80
     }
     
     
@@ -143,7 +151,5 @@ class SettingsViewController: UIViewController {
 //        let controller = segue.destinationViewController as! InstructionsViewController
 //        controller.string = label.text
 //    }
-    
-    
     
 }

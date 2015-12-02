@@ -10,9 +10,7 @@ import UIKit
 import Foundation
 
 class TestViewController: UIViewController {
-    
     @IBOutlet weak var speedDisplay: UILabel!
-    
     //Initiates the timer and scrollingLabel of the view controller
     var scrollLabel:ScrollingLabel!
     var timer:NSTimer!
