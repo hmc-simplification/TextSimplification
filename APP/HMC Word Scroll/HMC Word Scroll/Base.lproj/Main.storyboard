@@ -267,7 +267,7 @@
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="110" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7he-rt-EyZ">
-                                <rect key="frame" x="811" y="358" width="71" height="51"/>
+                                <rect key="frame" x="871" y="358" width="71" height="51"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -281,13 +281,13 @@
                                     <outlet property="delegate" destination="Z1S-Aa-wRR" id="ZYy-kD-ZJ8"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Normal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGf-vk-EmR">
-                                <rect key="frame" x="793" y="583" width="107" height="32"/>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="TsJ-Bp-xP4">
+                                <rect key="frame" x="753" y="369" width="94" height="29"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="Z1S-Aa-wRR" eventType="valueChanged" id="LHc-KC-SKc"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -298,8 +298,8 @@
                         <outlet property="fixedSpeedLabel" destination="xyE-Ye-cmP" id="iUp-pf-cSQ"/>
                         <outlet property="fontSizeLabel" destination="hWK-Su-v4t" id="ayI-fU-Ufv"/>
                         <outlet property="fontSizeLabel2" destination="7he-rt-EyZ" id="zz3-PN-h71"/>
+                        <outlet property="fontSizeStepper" destination="TsJ-Bp-xP4" id="jvf-uN-Ufe"/>
                         <outlet property="label" destination="nxL-C0-EbO" id="eGt-Qs-ZW5"/>
-                        <outlet property="label2" destination="UGf-vk-EmR" id="1MF-fu-xPE"/>
                         <outlet property="settingsLabel" destination="X6h-nG-F8a" id="ofj-CJ-fPJ"/>
                         <outlet property="themesLabel" destination="hqW-hd-J3M" id="T2e-Jp-Wvq"/>
                     </connections>
@@ -376,6 +376,13 @@
                                     <segue destination="Z1S-Aa-wRR" kind="show" id="DdH-1J-sLI"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfk-0W-pwu">
+                                <rect key="frame" x="486" y="145" width="52" height="27"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

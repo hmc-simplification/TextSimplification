@@ -17,14 +17,17 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
     
-    @IBOutlet weak var label2: UILabel!
-    
+    @IBOutlet weak var fontSizeStepper: UIStepper!
     @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var themesLabel: UILabel!
     @IBOutlet weak var fontSizeLabel: UILabel!
     @IBOutlet weak var fontSizeLabel2: UILabel!
     @IBOutlet weak var displaySpeedLabel: UILabel!
     @IBOutlet weak var fixedSpeedLabel: UILabel!
+    
+    @IBAction func stepperValueChanged(sender: UIStepper) {
+        fontSizeLabel2.text = Int(sender.value).description
+    }
     
     var colorThemes = ["Normal","Inverse","Sepia"]
     
@@ -48,7 +51,7 @@ class SettingsViewController: UIViewController {
         NSUserDefaults.standardUserDefaults().setObject(colorThemes[row], forKey: "theme")
         let currentTheme = NSUserDefaults.standardUserDefaults().objectForKey("theme")! as! NSString
         
-        let arr = [settingsLabel, themesLabel, fontSizeLabel, fontSizeLabel2,displaySpeedLabel,fixedSpeedLabel,label2]
+        let arr = [settingsLabel, themesLabel, fontSizeLabel, fontSizeLabel2,displaySpeedLabel,fixedSpeedLabel]
         
         if currentTheme == "Inverse" {
             self.view.backgroundColor = UIColor.grayColor()
@@ -75,7 +78,6 @@ class SettingsViewController: UIViewController {
             }
         }
         
-        label2.text = currentTheme as String
     }
     
     @IBAction func speedSwitchChanged(sender: AnyObject) {
@@ -86,5 +88,15 @@ class SettingsViewController: UIViewController {
             label.text = "Off"
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        fontSizeStepper.wraps = true
+        fontSizeStepper.autorepeat = true
+        fontSizeStepper.maximumValue = 130
+        fontSizeStepper.minimumValue = 80
+    }
+    
     
 }

@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 class TestViewController: UIViewController {
-    
+        
     //Initiates the timer and scrollingLabel of the view controller
     var scrollLabel:ScrollingLabel!
     var timer:NSTimer!
