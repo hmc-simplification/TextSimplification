@@ -130,12 +130,12 @@ public class ScrollingLabel: CustomStringConvertible {
     
     
     
-    init(xPosition: CGFloat, yPosition: CGFloat, width: CGFloat, height: CGFloat) {
+    init(frame:CGRect) {
         /*Initializes the object by calling 3 private setup functions,
         each dealing one with a specific feature of the final label, and
         finally calling the scroll function to activate the accelerometer
         control*/
-        setupFrame(xPosition, yPosition: yPosition, width: width, height: height)
+        setupFrame(frame)
         setupLabel()
         setupScrollView()
         startScrolling()
@@ -150,8 +150,8 @@ public class ScrollingLabel: CustomStringConvertible {
         self.stopwatch.stop()
     }
     
-    private func setupFrame(xPosition: CGFloat, yPosition: CGFloat, width: CGFloat, height: CGFloat) {
-        let frame = CGRectMake(xPosition, yPosition, width, height)
+    private func setupFrame(frame:CGRect) {
+        let frame = frame
         //Creates the frame of the label, and creates the child objects
         self.frame=frame
         if startWithTextOffScreen { labelXCoord += self.frame.width }
@@ -166,12 +166,9 @@ public class ScrollingLabel: CustomStringConvertible {
         baseScrollView.layer.cornerRadius = cornerRadius
         baseScrollView.layer.masksToBounds = true
         
-        // Only mess with the border when we can't do blurring
-        if UIAccessibilityIsReduceTransparencyEnabled() {
-            baseScrollView.layer.borderColor=borderColor.CGColor
-            baseScrollView.layer.borderWidth=borderWidth
-            baseScrollView.layer.backgroundColor=backgroundColor.CGColor
-        }
+        baseScrollView.layer.borderColor=borderColor.CGColor
+        baseScrollView.layer.borderWidth=borderWidth
+        baseScrollView.layer.backgroundColor=backgroundColor.CGColor
         
         baseScrollView.userInteractionEnabled = PRIVATEDEBUG
     }

@@ -49,53 +49,15 @@ class TestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hardFinishButtonItem.hidden=true
-        
-        // If the user has disabled transparency, shrink the frame
-        if UIAccessibilityIsReduceTransparencyEnabled() {
-            createScrollingLabel(
-                (screenWidth - frameSize)/2,
-                yPosition: (screenHeight/2) - scrollLabelHeight/2,
-                width: frameSize,
-                height: scrollLabelHeight
-            )
-        } else {
-            createScrollingLabel(
-                screenWidth,
-                yPosition: (screenHeight/2) - scrollLabelHeight/2,
-                width: frameSize,
-                height: scrollLabelHeight
-            )
-        }
-        createBlurs(
-            (screenWidth - frameSize)/2,
-            yPosition: (screenHeight/2) - scrollLabelHeight/2,
-            width: frameSize,
-            height: scrollLabelHeight
-        )
+        createScrollingLabel()
+
     }
     
-    func createScrollingLabel(xPosition: CGFloat, yPosition: CGFloat, width: CGFloat, height: CGFloat) {
+    func createScrollingLabel() {
         //Creates the scrollLabel
-        scrollLabel = ScrollingLabel(xPosition: xPosition, yPosition: yPosition, width: width, height: height)
+        scrollLabel=ScrollingLabel(frame: CGRectMake((screenWidth-frameSize)/2,(screenHeight/2)-scrollLabelHeight/2,frameSize,scrollLabelHeight))
         resetScrollingLabelText()
         self.view.addSubview(scrollLabel)
-    }
-    
-    func createBlurs(xPosition: CGFloat, yPosition: CGFloat, width: CGFloat, height: CGFloat) {
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.ExtraLight)
-        let leftBlurView = UIVisualEffectView(effect: blurEffect)
-        // The left blur extends up until where the red frame used to be
-        leftBlurView.frame = CGRectMake(0, yPosition, xPosition, height)
-        let rightBlurView = UIVisualEffectView(effect: blurEffect)
-        // The right blur extends from the end of the frame to the edge
-        rightBlurView.frame = CGRectMake(xPosition + width, yPosition, self.view.frame.size.width - xPosition - width, height)
-        
-        // Provide a mask so they can resize
-        leftBlurView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        rightBlurView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        
-        self.view.addSubview(leftBlurView)
-        self.view.addSubview(rightBlurView)
     }
     
     func resetScrollingLabelText() {
