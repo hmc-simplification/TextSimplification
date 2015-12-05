@@ -63,7 +63,7 @@
                                 <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="40"/>
                                 <state key="normal" title="Instructions"/>
                                 <connections>
-                                    <segue destination="1Hd-jA-dLf" kind="show" id="XJl-LK-ou9"/>
+                                    <segue destination="dNz-zj-Nbm" kind="show" id="GVZ-Os-nC9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vg-qx-D2j">
@@ -72,7 +72,7 @@
                                 <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="40"/>
                                 <state key="normal" title="Library"/>
                                 <connections>
-                                    <segue destination="dNz-zj-Nbm" kind="show" id="0o3-Uv-kde"/>
+                                    <segue destination="1Hd-jA-dLf" kind="show" id="RTb-8d-BwX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tR4-4O-7G9">
@@ -391,10 +391,10 @@
             </objects>
             <point key="canvasLocation" x="1175" y="470"/>
         </scene>
-        <!--View Controller-->
+        <!--Library View Controller-->
         <scene sceneID="CxA-mV-Z6a">
             <objects>
-                <viewController id="1Hd-jA-dLf" sceneMemberID="viewController">
+                <viewController id="1Hd-jA-dLf" customClass="LibraryViewController" customModule="HMC_Word_Scroll" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WcO-AI-2kl"/>
                         <viewControllerLayoutGuide type="bottom" id="zcy-cl-XjF"/>
@@ -452,7 +452,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sb0-E9-Hgz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1175" y="1412"/>
+            <point key="canvasLocation" x="1175" y="1398"/>
         </scene>
         <!--Metrics View Controller-->
         <scene sceneID="grQ-3r-VBq">
@@ -588,7 +588,7 @@
         <image name="settings.png" width="800" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7iQ-pB-O8v"/>
-        <segue reference="KYb-H9-r60"/>
+        <segue reference="DFv-DZ-4gl"/>
+        <segue reference="d1e-2Q-KJv"/>
     </inferredMetricsTieBreakers>
 </document>
