@@ -8,16 +8,29 @@
 
 import UIKit
 
+class Settings {
+    
+    static let sharedInstance = Settings()
+    
+    static var currentTheme = "Normal"
+    
+    static var displaySpeed = "On"
+    
+    static var fontSize = "110"
+    
+    init() {
+        print("Settings Singleton");
+    }
+    
+}
+
 class SettingsViewController: UIViewController {
     
     //UI Elements and defaults
     
-    
     @IBOutlet weak var displaySpeedSwitch: UISwitch!
     
     @IBOutlet weak var label: UILabel!
-    
-    @IBOutlet weak var label2: UILabel!
     
     @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var themesLabel: UILabel!
@@ -45,10 +58,13 @@ class SettingsViewController: UIViewController {
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
         
-        NSUserDefaults.standardUserDefaults().setObject(colorThemes[row], forKey: "theme")
-        let currentTheme = NSUserDefaults.standardUserDefaults().objectForKey("theme")! as! NSString
+        //NSUserDefaults.standardUserDefaults().setObject(colorThemes[row], forKey: "theme")
+        //let currentTheme = NSUserDefaults.standardUserDefaults().objectForKey("theme")! as! NSString
         
-        let arr = [settingsLabel, themesLabel, fontSizeLabel, fontSizeLabel2,displaySpeedLabel,fixedSpeedLabel,label2]
+        let currentTheme = colorThemes[row]
+        Settings.currentTheme = currentTheme
+        
+        let arr = [settingsLabel, themesLabel, fontSizeLabel, fontSizeLabel2,displaySpeedLabel,fixedSpeedLabel]
         
         if currentTheme == "Inverse" {
             self.view.backgroundColor = UIColor.grayColor()
@@ -75,17 +91,59 @@ class SettingsViewController: UIViewController {
             }
         }
         
-        label2.text = currentTheme as String
     }
     
     @IBAction func speedSwitchChanged(sender: AnyObject) {
         if displaySpeedSwitch.on {
+            Settings.displaySpeed = "On"
             label.text = "On"
         }
         else {
+            Settings.displaySpeed = "Off"
             label.text = "Off"
         }
     }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let arr = [settingsLabel, themesLabel, fontSizeLabel, fontSizeLabel2,displaySpeedLabel,fixedSpeedLabel]
+        
+        if Settings.currentTheme == "Inverse" {
+            self.view.backgroundColor = UIColor.grayColor()
+            
+            
+            for label in arr {
+                label.textColor = UIColor.whiteColor()
+            }
+        }
+        else if Settings.currentTheme == "Sepia" {
+            let swiftColor = UIColor(red: 253/255, green: 227/255, blue: 167/255, alpha: 1)
+            
+            self.view.backgroundColor = swiftColor
+            
+            for label in arr {
+                label.textColor = UIColor.brownColor()
+            }
+        }
+        else {
+            self.view.backgroundColor = UIColor.whiteColor()
+            
+            for label in arr {
+                label.textColor = UIColor.blackColor()
+            }
+        }
+        
+        print(Settings.currentTheme)
+    }
+    
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+//        let controller = segue.destinationViewController as! InstructionsViewController
+//        controller.string = label.text
+//    }
+    
     
     
 }

@@ -11,10 +11,15 @@ import Foundation
 
 class TestViewController: UIViewController {
     
+    @IBOutlet weak var speedDisplay: UILabel!
+    
     //Initiates the timer and scrollingLabel of the view controller
     var scrollLabel:ScrollingLabel!
     var timer:NSTimer!
     var idNumber:String!
+    
+    
+    //scrollLabel.sampleFontSize = Settings.fontSize
     
     //Start on iteration -1 for acclimation text
     var iteration:Int=(-1)
@@ -50,7 +55,14 @@ class TestViewController: UIViewController {
         super.viewDidLoad()
         hardFinishButtonItem.hidden=true
         createScrollingLabel()
-
+        
+        if Settings.displaySpeed == "On" {
+            speedDisplay.text = String(scrollLabel.speed)
+        }
+        else {
+            speedDisplay.text = ""
+        }
+        
     }
     
     func createScrollingLabel() {
@@ -118,6 +130,8 @@ class TestViewController: UIViewController {
         resetScrollingLabelText()
         scrollLabel.restartScrollingLabel()
     }
+
+    
 }
 
 
