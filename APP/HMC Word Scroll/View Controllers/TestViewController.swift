@@ -33,7 +33,7 @@ class TestViewController: UIViewController {
     let frameSize:CGFloat=700
     
     //Different types of text
-    let textTypes:Array<String>=["Semantics","Syntactic","Lexical"]
+    let textTypes:Array<String>=["Test","Semantics","Syntactic","Lexical"]
     var textVersion:String!
     
     //Randomly picks which version, A or B you will start with
@@ -113,6 +113,7 @@ class TestViewController: UIViewController {
             masterDataDictionary["'"+nextText+textType+"'"]=scrollLabel.metricsDictionary.printDict()
         }
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         //Passes data to MVC
