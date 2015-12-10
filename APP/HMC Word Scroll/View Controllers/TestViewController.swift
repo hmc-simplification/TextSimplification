@@ -147,6 +147,11 @@ class TestViewController: UIViewController {
             if iteration+1==(textTypes.length*numberOfTexts) {
                 hardFinishButtonItem.hidden=false
             }
+            // hardFinishButton will pop up after 2 samples
+            else if iteration == 2 {
+                hardFinishButtonItem.hidden=false
+                softFinishButtonItem.hidden=true
+            }
             else {softFinishButtonItem.hidden=false}
             masterDataDictionary["'"+nextText+textType+"'"]=scrollLabel.metricsDictionary.printDict()
         }

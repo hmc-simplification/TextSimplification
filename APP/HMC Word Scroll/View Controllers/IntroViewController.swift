@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 class IntroViewController: UIViewController {
     //First view controller to select ID number and begin tests

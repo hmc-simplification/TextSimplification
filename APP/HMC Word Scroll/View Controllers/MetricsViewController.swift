@@ -8,6 +8,8 @@
 
 import UIKit
 import MessageUI
+import Parse
+import Bolts
 
 class MetricsViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
@@ -23,6 +25,22 @@ class MetricsViewController: UIViewController, MFMailComposeViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let trials = PFObject(className: "Trials")
+        
+        trials["IDNumber"] = String(idNumber)
+        trials["Acceleration"] = accelerationData.printDict()
+        
+        trials.saveInBackgroundWithBlock{(success,error) -> Void in
+            if success == true {
+                print("Success")
+            }
+            else {
+                print("Failed")
+                print(error)
+            }
+        }
+        
         if MFMailComposeViewController.canSendMail() {
             let emailer = MFMailComposeViewController()
             emailer.mailComposeDelegate=self
