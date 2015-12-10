@@ -57,15 +57,6 @@
                                 <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="40"/>
                                 <state key="normal" title="Resume"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csv-0l-6hY">
-                                <rect key="frame" x="371" y="506" width="283" height="59"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="40"/>
-                                <state key="normal" title="Instructions"/>
-                                <connections>
-                                    <segue destination="dNz-zj-Nbm" kind="show" id="GVZ-Os-nC9"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vg-qx-D2j">
                                 <rect key="frame" x="430" y="553" width="165" height="70"/>
                                 <animations/>
@@ -99,6 +90,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csv-0l-6hY">
+                                <rect key="frame" x="371" y="506" width="283" height="59"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="40"/>
+                                <state key="normal" title="Instructions"/>
+                                <connections>
+                                    <segue destination="dNz-zj-Nbm" kind="show" id="GVZ-Os-nC9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -107,6 +107,13 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="idTextFieldItem" destination="lUA-fq-QDa" id="RQd-6L-SfZ"/>
+                        <outlet property="instructButton" destination="Csv-0l-6hY" id="LPF-uP-Oi1"/>
+                        <outlet property="libraryButton" destination="1vg-qx-D2j" id="jTo-1f-547"/>
+                        <outlet property="resumeButton" destination="Cct-vY-5Y5" id="DEA-e3-CL8"/>
+                        <outlet property="startButton" destination="LL6-sv-cDK" id="rGn-6c-s7B"/>
+                        <outlet property="statsButton" destination="tR4-4O-7G9" id="dd5-5W-EY6"/>
+                        <outlet property="text1" destination="8JU-71-5PT" id="gpg-wj-osM"/>
+                        <outlet property="textScrollTitle" destination="uT1-pB-fjv" id="rYE-GK-gDH"/>
                         <segue destination="uKL-Xq-AzC" kind="show" identifier="toTestViewController" id="kuI-2q-sde"/>
                     </connections>
                 </viewController>
@@ -115,10 +122,10 @@
             </objects>
             <point key="canvasLocation" x="-6" y="470"/>
         </scene>
-        <!--View Controller-->
+        <!--User Stats View Controller-->
         <scene sceneID="Z0l-Pp-xxV">
             <objects>
-                <viewController id="vUX-S1-xYn" sceneMemberID="viewController">
+                <viewController id="vUX-S1-xYn" customClass="UserStatsViewController" customModule="HMC_Word_Scroll" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F0o-9Y-OLu"/>
                         <viewControllerLayoutGuide type="bottom" id="jMU-lt-rIs"/>
@@ -188,6 +195,15 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="averageSpeedLabel" destination="y2D-DG-WPg" id="qNJ-8z-9yR"/>
+                        <outlet property="averageSpeedNumLabel" destination="mnR-IU-Dj1" id="VVy-Af-hyd"/>
+                        <outlet property="numberArticlesLabel" destination="ZmQ-YY-TTd" id="uom-TR-s8q"/>
+                        <outlet property="numberArticlesNumLabel" destination="tWW-t7-BAc" id="neP-EY-OA5"/>
+                        <outlet property="totalWordsLabel" destination="RYa-B7-3i5" id="0kQ-bB-TAt"/>
+                        <outlet property="totalWordsNumLabel" destination="xow-WU-K9a" id="T5Q-Lg-WOi"/>
+                        <outlet property="userStatsTitle" destination="t5X-gu-Dyx" id="g43-RY-mnc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGb-UE-GdG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -312,17 +328,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TrT-Ap-Ge3">
-                                <rect key="frame" x="323" y="611" width="378" height="72"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <state key="normal" title="Press when done">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="6aA-KC-SAk" kind="show" identifier="toMetricsViewController" id="uHD-zF-ux4"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7J-BD-36w">
                                 <rect key="frame" x="371" y="611" width="282" height="72"/>
                                 <animations/>
@@ -368,6 +373,17 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TrT-Ap-Ge3">
+                                <rect key="frame" x="323" y="611" width="378" height="72"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="Press when done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="6aA-KC-SAk" kind="show" identifier="toMetricsViewController" id="uHD-zF-ux4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -376,6 +392,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="hardFinishButtonItem" destination="TrT-Ap-Ge3" id="oZp-Jl-Fst"/>
+                        <outlet property="nextButton" destination="D7J-BD-36w" id="2uB-xz-EaZ"/>
+                        <outlet property="pressButton" destination="TrT-Ap-Ge3" id="HwA-HA-pEc"/>
+                        <outlet property="resetButton" destination="zyG-CY-Ro6" id="npf-ut-JPG"/>
                         <outlet property="softFinishButtonItem" destination="D7J-BD-36w" id="ED2-Yh-fV1"/>
                         <outlet property="speedDisplay" destination="YSO-cJ-36b" id="1uh-tG-Zv8"/>
                     </connections>
@@ -442,6 +461,11 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="importLabel" destination="mhl-fO-4Lq" id="GCc-rk-RXi"/>
+                        <outlet property="libraryTitle" destination="Nc3-sd-ex6" id="fPW-6M-9mN"/>
+                        <outlet property="searchButton" destination="qTR-79-Gyh" id="rM2-Vw-kGf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sb0-E9-Hgz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -490,6 +514,10 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="resetButton" destination="BBr-X6-hOZ" id="gUd-wI-xim"/>
+                        <outlet property="thankTitle" destination="Xd8-td-xOq" id="JpL-2W-awJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="73C-wg-wPl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -589,7 +617,7 @@
         <image name="settings.png" width="800" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DdH-1J-sLI"/>
-        <segue reference="EXd-Yy-XFh"/>
+        <segue reference="d1e-2Q-KJv"/>
+        <segue reference="1UL-8d-6Er"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,7 +24,7 @@ public class ScrollingLabel: CustomStringConvertible {
     
     //Default variables for font size and text
     private static let sampleText:String="This is sample text for this scrolling label"
-    private static let sampleFontSize:CGFloat=110
+    public static var sampleFontSize:CGFloat=110
     private static let sampleFontName:String="Courier"
     private static let sampleFont:UIFont=UIFont(name:ScrollingLabel.sampleFontName,size:ScrollingLabel.sampleFontSize)!
     

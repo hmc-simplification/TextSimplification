@@ -13,13 +13,14 @@ class TestViewController: UIViewController {
     
     @IBOutlet weak var speedDisplay: UILabel!
     
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var pressButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    
     //Initiates the timer and scrollingLabel of the view controller
     var scrollLabel:ScrollingLabel!
     var timer:NSTimer!
     var idNumber:String!
-    
-    
-    //scrollLabel.sampleFontSize = Settings.fontSize
     
     //Start on iteration -1 for acclimation text
     var iteration:Int=(-1)
@@ -54,13 +55,50 @@ class TestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hardFinishButtonItem.hidden=true
+        
         createScrollingLabel()
         
         if Settings.displaySpeed == "On" {
-            speedDisplay.text = String(scrollLabel.speed)
+            speedDisplay.text = String(scrollLabel.wordsPerMinute)
         }
         else {
             speedDisplay.text = ""
+        }
+        
+        let arr = [speedDisplay]
+        let arr2 = [resetButton, pressButton, nextButton]
+        
+        if Settings.currentTheme == "Inverse" {
+            self.view.backgroundColor = UIColor.grayColor()
+            
+            for label in arr {
+                label.textColor = UIColor.whiteColor()
+            }
+            for button in arr2 {
+                button.tintColor = UIColor.yellowColor()
+            }
+        }
+        else if Settings.currentTheme == "Sepia" {
+            let swiftColor = UIColor(red: 253/255, green: 227/255, blue: 167/255, alpha: 1)
+            
+            self.view.backgroundColor = swiftColor
+            
+            for label in arr {
+                label.textColor = UIColor.brownColor()
+            }
+            for button in arr2 {
+                button.tintColor = UIColor.blueColor()
+            }
+        }
+        else {
+            self.view.backgroundColor = UIColor.whiteColor()
+            
+            for label in arr {
+                label.textColor = UIColor.blackColor()
+            }
+            for button in arr2 {
+                button.tintColor = UIColor.blueColor()
+            }
         }
         
     }

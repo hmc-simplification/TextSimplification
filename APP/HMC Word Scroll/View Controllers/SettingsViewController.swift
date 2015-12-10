@@ -135,15 +135,9 @@ class SettingsViewController: UIViewController {
             }
         }
         
-        print(Settings.currentTheme)
+        //print(Settings.currentTheme)
     }
-    
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-//        let controller = segue.destinationViewController as! InstructionsViewController
-//        controller.string = label.text
-//    }
-    
+
     
     
 }
