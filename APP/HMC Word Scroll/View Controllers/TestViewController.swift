@@ -40,15 +40,17 @@ class TestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.whiteColor()
+
         //hardFinishButtonItem.hidden=true
         createScrollingLabel()
         
-        if Settings.displaySpeed == "On" {
-            speedDisplay.text = String(scrollLabel.speed)
-        }
-        else {
-            speedDisplay.text = ""
-        }
+//        if Settings.displaySpeed == "On" {
+//            speedDisplay.text = String(scrollLabel.speed)
+//        }
+//        else {
+//            speedDisplay.text = ""
+//        }
         
     }
     
@@ -80,6 +82,7 @@ class TestViewController: UIViewController {
         if scrollLabel.doneWithText {
             self.timer!.invalidate()
             masterDataDictionary["'\(Settings.currentTextID)'"] = scrollLabel.metricsDictionary.printDict()
+            ++Library.iteration
         }
     }
     

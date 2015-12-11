@@ -9,25 +9,26 @@
 import UIKit
 
 class Library {
-    struct Static {
-        //Different types of text
-        static let testTextTypes:Array<String> = [
-            "Test", "Semantics", "Syntactic", "Lexical"
-        ]
-        static var testTextVersion:String!
+    static var texts = [Int: String]()
     
-        //Randomly picks which version, A or B you will start with
-        static var testTextVersionNumber:Int = Int(arc4random_uniform(2))
-        static let testTextVersions:Array<String> = ["A", "B"]
-    
-        //The number of texts per text type
-        static let numberOfTestTexts:Int = 4
-        static var nextTestText:String!
-        static var testTextType:String!
+    //Different types of text
+    static let testTextTypes:Array<String> = [
+        "Acclimation", "Info", "Semantics", "Syntactic", "Lexical"
+    ]
+    static var testTextVersion:String!
 
-        //plist key for wikipedia stuff
-        static let CONTENTS:String = "Contents"
-    }
+    //Randomly picks which version, A or B you will start with
+    static var testTextVersionNumber:Int = Int(arc4random_uniform(2))
+    static let testTextVersions:Array<String> = ["A", "B"]
+    
+    //The number of texts per text type
+    static let numberOfTestTexts:Int = 4
+    static var nextTestText:String!
+    static var testTextType:String!
+
+    //plist key for wikipedia stuff
+    static let CONTENTS:String = "Contents"
+    static var iteration = -1
 
     static func getTextById(id: String) -> String {
         let index = id.endIndex.advancedBy(-6)
@@ -35,22 +36,21 @@ class Library {
         let path = NSBundle.mainBundle().pathForResource(name, ofType:"plist")
         let myDict = NSDictionary(contentsOfFile: path!)
         let textDictionary = myDict as! Dictionary<String, String>
-        var iteration = -1
-
-        if Static.testTextTypes.contains(id) {
+        
+        if testTextTypes.contains(name) {
             // It is a test string
-            Static.testTextVersionNumber = (Static.testTextVersionNumber + 1) % 2
-            Static.testTextVersion = Static.testTextVersions[Static.testTextVersionNumber]
+            testTextVersionNumber = (testTextVersionNumber + 1) % 2
+            testTextVersion = testTextVersions[testTextVersionNumber]
             if iteration == -1 {
-                Static.nextTestText = "1A"
+                nextTestText = "1A"
             } else {
-                Static.nextTestText = String(
-                    (iteration % Static.numberOfTestTexts) + 1) + 
-                    Static.testTextVersion
+                nextTestText = String(
+                    (iteration % numberOfTestTexts) + 1) +
+                    testTextVersion
             }
-            return textDictionary[Static.nextTestText]!
+            return textDictionary[nextTestText]!
         } else {
-            return textDictionary[Static.CONTENTS]!
+            return textDictionary[CONTENTS]!
         }
     }
 }
@@ -111,15 +111,15 @@ class LibraryTableViewController: UITableViewController {
         //cell.textLabel?.text = self.textArray[indexPath.row]
         
         // Display the file name *.plist
-        cell.textLabel?.text = paths[indexPath.row].componentsSeparatedByString(".app/")[1]
+        let label = paths[indexPath.row].componentsSeparatedByString(".app/")[1]
+        cell.textLabel?.text = label
+        Library.texts[indexPath.row] = label
         
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
-        let cellName = cell.textLabel?.text
-        Settings.currentTextID = cellName!
+        Settings.currentTextID = Library.texts[indexPath.row]!
         self.presentViewController(TestViewController(), animated:true, completion:nil)
     }
     

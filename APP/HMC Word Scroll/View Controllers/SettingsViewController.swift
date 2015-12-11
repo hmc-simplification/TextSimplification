@@ -18,7 +18,7 @@ class Settings {
     
     static var fontSize = "110"
     
-    static var currentTextID:String = ""
+    static var currentTextID:String = "Acclimation.plist"
     
     init() {
         print("Settings Singleton");
