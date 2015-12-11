@@ -72,7 +72,7 @@ class TestViewController: UIViewController {
     }
     
     func getNextText() -> String {
-        return ""//Library.getTextById(Settings.currentTextID)
+        return Library.getTextById(Settings.currentTextID)
     }
     
     func checkForCompletion() {

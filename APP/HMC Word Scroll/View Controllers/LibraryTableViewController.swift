@@ -8,6 +8,52 @@
 
 import UIKit
 
+class Library {
+    struct Static {
+        //Different types of text
+        static let testTextTypes:Array<String> = [
+            "Test", "Semantics", "Syntactic", "Lexical"
+        ]
+        static var testTextVersion:String!
+    
+        //Randomly picks which version, A or B you will start with
+        statuc var testTextVersionNumber:Int = Int(arc4random_uniform(2))
+        static let testTextVersions:Array<String> = ["A", "B"]
+    
+        //The number of texts per text type
+        static let numberOfTestTexts:Int = 4
+        static var nextTestText:String!
+        static var testTextType:String!
+
+        //plist key for wikipedia stuff
+        static let CONTENTS:String = "Contents"
+    }
+
+    static func getTextById(id: String) -> String {
+        let name = id.substringToIndex(advance(id.endIndex, -6))
+        let path = NSBundle.mainBundle().pathForResource(name, ofType:"plist")
+        let myDict = NSDictionary(contentsOfFile: path!)
+        let textDictionary = myDict as! Dictionary<String, String>         
+
+        if contains(Static.testTextTypes, id) {
+            // It is a test string
+            Static.testTextVersionNumber = (Static.testTextVersionNumber + 1) % 2
+            Static.testTextVersion = Static.testTextVersions[Static.testTextVersionNumber]
+            if iteration == -1 {
+                Static.nextTestText = "1A"
+            } else {
+                Static.nextTestText = String(
+                    (iteration % Static.numberOfTestTexts) + 1) + 
+                    Static.testTextVersion
+                )    
+            }
+            return textDictionary[Static.nextTestText]!
+        } else {
+            return textDictionary[Static.CONTENTS]!
+        }
+    }
+}
+
 class LibraryTableViewController: UITableViewController {
     //folderName = "HMC Word Scroll.app"
     let paths = NSBundle.mainBundle().pathsForResourcesOfType("plist", inDirectory: nil)
@@ -67,6 +113,12 @@ class LibraryTableViewController: UITableViewController {
         cell.textLabel?.text = paths[indexPath.row].componentsSeparatedByString(".app/")[1]
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        let cellName = cell.textLabel?.text
+        Settings.currentTextID = cellName!
     }
     
 
