@@ -83,6 +83,9 @@ class TestViewController: UIViewController {
             self.timer!.invalidate()
             masterDataDictionary["'\(Settings.currentTextID)'"] = scrollLabel.metricsDictionary.printDict()
             ++Library.iteration
+            resetScrollingLabelText()
+            scrollLabel.restartScrollingLabel()
+            self.presentViewController(LibraryTableViewController(), animated:true, completion:nil)
         }
     }
     
