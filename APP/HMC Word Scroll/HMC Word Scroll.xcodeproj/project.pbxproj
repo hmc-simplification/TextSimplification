@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58C905EB1C1A80410039AEFF /* Basketball.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58C905EA1C1A80410039AEFF /* Basketball.plist */; settings = {ASSET_TAGS = (); }; };
+		58C905EC1C1A80410039AEFF /* Basketball.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58C905EA1C1A80410039AEFF /* Basketball.plist */; settings = {ASSET_TAGS = (); }; };
 		873202201C135F920060EB2A /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8732021F1C135F920060EB2A /* LibraryViewController.swift */; };
 		87A6EC1A1BBBA24000E8A102 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 87A6EC191BBBA24000E8A102 /* settings.png */; };
 		87A6EC1E1BBBA9EF00E8A102 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 87A6EC1D1BBBA9EF00E8A102 /* home.png */; };
@@ -42,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58C905EA1C1A80410039AEFF /* Basketball.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Basketball.plist; sourceTree = "<group>"; };
 		8732021F1C135F920060EB2A /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		87A6EC191BBBA24000E8A102 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		87A6EC1D1BBBA9EF00E8A102 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
@@ -120,6 +123,7 @@
 				EA8B3F131B4B1AF400137A49 /* Lexical.plist */,
 				EA8B3F141B4B1AF400137A49 /* Semantics.plist */,
 				EA8B3F151B4B1AF400137A49 /* Syntactic.plist */,
+				58C905EA1C1A80410039AEFF /* Basketball.plist */,
 			);
 			path = Texts;
 			sourceTree = "<group>";
@@ -267,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87A6EC1A1BBBA24000E8A102 /* settings.png in Resources */,
+				58C905EB1C1A80410039AEFF /* Basketball.plist in Resources */,
 				EAF78C421B448BD70051A0CE /* Main.storyboard in Resources */,
 				87A6EC1E1BBBA9EF00E8A102 /* home.png in Resources */,
 				EA8B3F171B4B1AF400137A49 /* Lexical.plist in Resources */,
@@ -282,6 +287,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58C905EC1C1A80410039AEFF /* Basketball.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

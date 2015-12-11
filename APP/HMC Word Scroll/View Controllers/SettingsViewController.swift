@@ -18,6 +18,8 @@ class Settings {
     
     static var fontSize = "110"
     
+    static var currentTextID:String = ""
+    
     init() {
         print("Settings Singleton");
     }

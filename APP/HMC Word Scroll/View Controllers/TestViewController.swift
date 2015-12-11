@@ -31,19 +31,6 @@ class TestViewController: UIViewController {
     let screenWidth:CGFloat=1024
     let screenHeight:CGFloat=768
     let frameSize:CGFloat=700
-    
-    //Different types of text
-    let textTypes:Array<String>=["Test","Semantics","Syntactic","Lexical"]
-    var textVersion:String!
-    
-    //Randomly picks which version, A or B you will start with
-    var versionNumber:Int=Int(arc4random_uniform(2))
-    let textVersions:Array<String>=["A","B"]
-    
-    //The number of texts per text type
-    let numberOfTexts:Int=4
-    var nextText:String!
-    var textType:String!
 
     var textDictionary:Dictionary<String,String>!
 
@@ -67,7 +54,11 @@ class TestViewController: UIViewController {
     
     func createScrollingLabel() {
         //Creates the scrollLabel
-        scrollLabel=ScrollingLabel(frame: CGRectMake((screenWidth-frameSize)/2,(screenHeight/2)-scrollLabelHeight/2,frameSize,scrollLabelHeight))
+        scrollLabel=ScrollingLabel(
+            frame: CGRectMake((screenWidth-frameSize)/2,
+                              screenHeight/2 - scrollLabelHeight/2,
+                              frameSize,
+                              scrollLabelHeight))
         resetScrollingLabelText()
         self.view.addSubview(scrollLabel)
     }
@@ -81,36 +72,14 @@ class TestViewController: UIViewController {
     }
     
     func getNextText() -> String {
-        //Determines which text to use next and returns the string of that text
-        if iteration==(-1) {
-            textType="Acclimation"
-        }
-        else {
-            textType=textTypes[iteration/numberOfTexts]
-        }
-        let path=NSBundle.mainBundle().pathForResource(textType,ofType:"plist")
-        let myDict=NSDictionary(contentsOfFile: path!)
-        textDictionary=myDict as! Dictionary<String,String>
-        //Switch version every text
-        versionNumber=(versionNumber+1)%2
-        textVersion=textVersions[versionNumber]
-        
-        if iteration==(-1) {nextText="1A"}
-        else {
-            nextText=String((iteration%numberOfTexts)+1)+textVersion
-        }
-        return textDictionary[nextText]!
+        return ""//Library.getTextById(Settings.currentTextID)
     }
     
     func checkForCompletion() {
         //If done with the text, depending on how many texts you have read, reveals a button and adds to the dictionary
         if scrollLabel.doneWithText {
             self.timer!.invalidate()
-            if iteration+1==(textTypes.length*numberOfTexts) {
-                hardFinishButtonItem.hidden=false
-            }
-            else {softFinishButtonItem.hidden=false}
-            masterDataDictionary["'"+nextText+textType+"'"]=scrollLabel.metricsDictionary.printDict()
+            masterDataDictionary["'\(Settings.currentTextID)'"] = scrollLabel.metricsDictionary.printDict()
         }
     }
     
@@ -134,7 +103,3 @@ class TestViewController: UIViewController {
 
     
 }
-
-
-
-
