@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		58C905EB1C1A80410039AEFF /* Basketball.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58C905EA1C1A80410039AEFF /* Basketball.plist */; settings = {ASSET_TAGS = (); }; };
 		58C905EC1C1A80410039AEFF /* Basketball.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58C905EA1C1A80410039AEFF /* Basketball.plist */; settings = {ASSET_TAGS = (); }; };
-		873202201C135F920060EB2A /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8732021F1C135F920060EB2A /* LibraryViewController.swift */; };
+		58C905EE1C1A959B0039AEFF /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C905ED1C1A959B0039AEFF /* LibraryTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		87A6EC1A1BBBA24000E8A102 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 87A6EC191BBBA24000E8A102 /* settings.png */; };
 		87A6EC1E1BBBA9EF00E8A102 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 87A6EC1D1BBBA9EF00E8A102 /* home.png */; };
 		87CEFBB81BC824180086C680 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEFBB71BC824180086C680 /* InstructionsViewController.swift */; };
@@ -45,7 +45,7 @@
 
 /* Begin PBXFileReference section */
 		58C905EA1C1A80410039AEFF /* Basketball.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Basketball.plist; sourceTree = "<group>"; };
-		8732021F1C135F920060EB2A /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		58C905ED1C1A959B0039AEFF /* LibraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
 		87A6EC191BBBA24000E8A102 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		87A6EC1D1BBBA9EF00E8A102 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		87CEFBB71BC824180086C680 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
@@ -94,11 +94,11 @@
 		EA2130C21B4B1A1E00C492D8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				58C905ED1C1A959B0039AEFF /* LibraryTableViewController.swift */,
 				EA2130C31B4B1A1E00C492D8 /* IntroViewController.swift */,
 				EA2130C41B4B1A1E00C492D8 /* MetricsViewController.swift */,
 				EA2130C51B4B1A1E00C492D8 /* TestViewController.swift */,
 				87CEFBB71BC824180086C680 /* InstructionsViewController.swift */,
-				8732021F1C135F920060EB2A /* LibraryViewController.swift */,
 				87CEFBB91BC8286A0086C680 /* SettingsViewController.swift */,
 				87CEFBBB1BC82D370086C680 /* UserStatsViewController.swift */,
 			);
@@ -238,7 +238,7 @@
 				TargetAttributes = {
 					EAF78C361B448BD60051A0CE = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = 27WQ6TA75H;
+						DevelopmentTeam = PU4XJ923B9;
 					};
 					EAF78C4B1B448BD70051A0CE = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -299,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA2130CF1B4B1A8800C492D8 /* ScrollingLabel.swift in Sources */,
+				58C905EE1C1A959B0039AEFF /* LibraryTableViewController.swift in Sources */,
 				EA2130D01B4B1A8800C492D8 /* StopWatch.swift in Sources */,
 				EA2130C71B4B1A1E00C492D8 /* MetricsViewController.swift in Sources */,
 				87CEFBBA1BC8286A0086C680 /* SettingsViewController.swift in Sources */,
@@ -308,7 +309,6 @@
 				EA2130C81B4B1A1E00C492D8 /* TestViewController.swift in Sources */,
 				EA2130D11B4B1A8800C492D8 /* Suple.swift in Sources */,
 				87CEFBBC1BC82D370086C680 /* UserStatsViewController.swift in Sources */,
-				873202201C135F920060EB2A /* LibraryViewController.swift in Sources */,
 				EAF78C3D1B448BD60051A0CE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,7 +443,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "HMC Word Scroll/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "MessingWithSwift.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "dobermiller16-cmc.edu.HMC-Word-Scroll";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -457,7 +457,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "HMC Word Scroll/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "MessingWithSwift.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "dobermiller16-cmc.edu.HMC-Word-Scroll";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

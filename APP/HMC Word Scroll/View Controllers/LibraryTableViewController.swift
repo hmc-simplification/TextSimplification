@@ -119,6 +119,7 @@ class LibraryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         let cellName = cell.textLabel?.text
         Settings.currentTextID = cellName!
+        self.presentViewController(TestViewController(), animated:true, completion:nil)
     }
     
 
