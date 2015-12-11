@@ -40,7 +40,7 @@ class TestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hardFinishButtonItem.hidden=true
+        //hardFinishButtonItem.hidden=true
         createScrollingLabel()
         
         if Settings.displaySpeed == "On" {
@@ -67,7 +67,7 @@ class TestViewController: UIViewController {
         //Resets the position of the scrolling label and changes its text
         scrollLabel.text=getNextText()
         self.timer=NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("checkForCompletion"), userInfo: nil, repeats: true)
-        softFinishButtonItem.hidden=true
+        //softFinishButtonItem.hidden=true
         scrollLabel.setContentOffset(CGPointZero,animated:false)
     }
     
@@ -93,13 +93,13 @@ class TestViewController: UIViewController {
             
         }
     }
-    
+    /*
     @IBAction func softFinishButton(sender: UIButton) {
         //Resets the label text and moves the scrollLabel to the correct position
         iteration++
         resetScrollingLabelText()
         scrollLabel.restartScrollingLabel()
-    }
+    }*/
 
     
 }

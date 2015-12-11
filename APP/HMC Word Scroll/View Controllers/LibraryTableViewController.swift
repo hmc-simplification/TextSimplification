@@ -17,7 +17,7 @@ class Library {
         static var testTextVersion:String!
     
         //Randomly picks which version, A or B you will start with
-        statuc var testTextVersionNumber:Int = Int(arc4random_uniform(2))
+        static var testTextVersionNumber:Int = Int(arc4random_uniform(2))
         static let testTextVersions:Array<String> = ["A", "B"]
     
         //The number of texts per text type
@@ -30,12 +30,14 @@ class Library {
     }
 
     static func getTextById(id: String) -> String {
-        let name = id.substringToIndex(advance(id.endIndex, -6))
+        let index = id.endIndex.advancedBy(-6)
+        let name = id.substringToIndex(index)
         let path = NSBundle.mainBundle().pathForResource(name, ofType:"plist")
         let myDict = NSDictionary(contentsOfFile: path!)
-        let textDictionary = myDict as! Dictionary<String, String>         
+        let textDictionary = myDict as! Dictionary<String, String>
+        var iteration = -1
 
-        if contains(Static.testTextTypes, id) {
+        if Static.testTextTypes.contains(id) {
             // It is a test string
             Static.testTextVersionNumber = (Static.testTextVersionNumber + 1) % 2
             Static.testTextVersion = Static.testTextVersions[Static.testTextVersionNumber]
@@ -45,7 +47,6 @@ class Library {
                 Static.nextTestText = String(
                     (iteration % Static.numberOfTestTexts) + 1) + 
                     Static.testTextVersion
-                )    
             }
             return textDictionary[Static.nextTestText]!
         } else {
