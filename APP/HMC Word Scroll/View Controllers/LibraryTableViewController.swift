@@ -9,11 +9,33 @@
 import UIKit
 
 class LibraryTableViewController: UITableViewController {
-    // Get all paths of plist files in the mainBundle.
+    //folderName = "HMC Word Scroll.app"
     let paths = NSBundle.mainBundle().pathsForResourcesOfType("plist", inDirectory: nil)
+    //let path = NSBundle.mainBundle().pathForResource("Test", ofType:"plist")
     
+    //let fm = NSFileManager.defaultManager()
+    //let path = NSBundle.mainBundle().resourcePath!
+    //let items = try! fm.contentsOfDirectoryAtPath(path)
+    
+    //for item in items {
+    //    if item.hasPrefix("nssl") {
+    //    objects.append(item)
+    //    }
+    //}
+    
+    //var textArray: NSArray*/
+    //var textArray:[String] = ["Hello", "world"]
+    
+    @IBOutlet weak var backbutton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //backbutton = self.navigationItem.leftBarButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,19 +46,24 @@ class LibraryTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
         return paths.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+        //let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         
-        // Display the file name as *.plist
+        //cell.textLabel?.text = self.textArray[indexPath.row]
+        
+        // Display the file name *.plist
         cell.textLabel?.text = paths[indexPath.row].componentsSeparatedByString(".app/")[1]
         
         return cell
